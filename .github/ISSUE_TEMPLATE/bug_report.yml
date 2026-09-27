@@ -1,0 +1,132 @@
+name: Bug report
+description: Report a reproducible problem in the unofficial Minecraft 1.21.1 Mystcraft Legacy port.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Full logs are much more useful than only the final few lines.
+
+  - type: input
+    id: mystcraft_version
+    attributes:
+      label: Mystcraft version
+      description: "Example: 0.13.7.06-port.1.0.0-Ueno"
+      placeholder: 0.13.7.06-port.1.0.0-Ueno
+    validations:
+      required: true
+
+  - type: input
+    id: minecraft_version
+    attributes:
+      label: Minecraft version
+      placeholder: 1.21.1
+    validations:
+      required: true
+
+  - type: input
+    id: neoforge_version
+    attributes:
+      label: NeoForge version
+      placeholder: 21.1.251
+    validations:
+      required: true
+
+  - type: input
+    id: java_version
+    attributes:
+      label: Java version
+      placeholder: Java 21
+    validations:
+      required: true
+
+  - type: input
+    id: modpack
+    attributes:
+      label: Modpack / mod list
+      description: Give the modpack name and version, or attach/paste a complete mod list.
+      placeholder: All the Mods 10 8.2, or custom mod list
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area of the problem
+      options:
+        - Game startup / mod loading
+        - Descriptive Book / Linking Book
+        - Age creation / entry / return
+        - Age save / restore / unload
+        - Terrain / biome / structure worldgen
+        - Dense Ores / modded ores
+        - Instability / Decay
+        - Crystal Portal / entity transfer
+        - Writing Desk / Book Binder / Ink Mixer / Lectern
+        - Archivist / village integration
+        - JEI integration
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Describe what you did immediately before the problem and a minimal sequence that reproduces it if known.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: pages
+    attributes:
+      label: Age Page / Symbol list
+      description: Required for Age, worldgen, Dense Ores, or Instability reports. Write N/A if unrelated.
+      placeholder: List every Page/Symbol used to create the affected Age.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Attach latest.log and debug.log. Also attach the crash report if one exists. Do not paste only the final few lines.
+      placeholder: Drag and drop latest.log and debug.log here.
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Screenshots, videos, save-specific details, or anything else that may help reproduce the issue.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmation
+      options:
+        - label: I checked KNOWN_ISSUES.md before filing this report.
+          required: true
+        - label: I am reporting a problem with the unofficial 1.21.1 port rather than an unrelated mod's error.
+          required: true
