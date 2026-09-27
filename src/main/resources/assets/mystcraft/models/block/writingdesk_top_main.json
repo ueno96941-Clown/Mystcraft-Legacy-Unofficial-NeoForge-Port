@@ -1,0 +1,169 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mystcraft:block/desk",
+    "desk": "mystcraft:block/desk"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        15
+      ],
+      "to": [
+        16,
+        12,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#desk"
+        },
+        "up": {
+          "texture": "#desk"
+        },
+        "north": {
+          "texture": "#desk"
+        },
+        "south": {
+          "texture": "#desk"
+        },
+        "west": {
+          "texture": "#desk"
+        },
+        "east": {
+          "texture": "#desk"
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        0,
+        9
+      ],
+      "to": [
+        1.5,
+        12,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#desk"
+        },
+        "up": {
+          "texture": "#desk"
+        },
+        "north": {
+          "texture": "#desk"
+        },
+        "south": {
+          "texture": "#desk"
+        },
+        "west": {
+          "texture": "#desk"
+        },
+        "east": {
+          "texture": "#desk"
+        }
+      }
+    },
+    {
+      "from": [
+        14,
+        0,
+        9
+      ],
+      "to": [
+        16,
+        12,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#desk"
+        },
+        "up": {
+          "texture": "#desk"
+        },
+        "north": {
+          "texture": "#desk"
+        },
+        "south": {
+          "texture": "#desk"
+        },
+        "west": {
+          "texture": "#desk"
+        },
+        "east": {
+          "texture": "#desk"
+        }
+      }
+    },
+    {
+      "from": [
+        1.5,
+        10.5,
+        9
+      ],
+      "to": [
+        14,
+        12,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#desk"
+        },
+        "up": {
+          "texture": "#desk"
+        },
+        "north": {
+          "texture": "#desk"
+        },
+        "south": {
+          "texture": "#desk"
+        },
+        "west": {
+          "texture": "#desk"
+        },
+        "east": {
+          "texture": "#desk"
+        }
+      }
+    },
+    {
+      "from": [
+        1.5,
+        5.5,
+        10
+      ],
+      "to": [
+        14,
+        6.5,
+        15
+      ],
+      "faces": {
+        "down": {
+          "texture": "#desk"
+        },
+        "up": {
+          "texture": "#desk"
+        },
+        "north": {
+          "texture": "#desk"
+        },
+        "south": {
+          "texture": "#desk"
+        },
+        "west": {
+          "texture": "#desk"
+        },
+        "east": {
+          "texture": "#desk"
+        }
+      }
+    }
+  ]
+}

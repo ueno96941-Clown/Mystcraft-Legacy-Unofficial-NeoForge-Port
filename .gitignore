@@ -1,0 +1,16 @@
+.gradle/
+build/
+run/
+runs/
+logs/
+crash-reports/
+*.log
+*.jar
+*.class
+.idea/
+.vscode/
+.DS_Store
+# The Gradle Wrapper JAR is source-distribution infrastructure and must be tracked.
+!gradle/wrapper/gradle-wrapper.jar
+# Development checkpoints may embed Gradle locally; public repositories should not track it.
+tools/gradle-*/

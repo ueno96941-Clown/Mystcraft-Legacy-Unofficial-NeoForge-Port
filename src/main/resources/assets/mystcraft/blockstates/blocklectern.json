@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north":{"model":"mystcraft:block/blocklectern_world"},
+    "facing=east":{"model":"mystcraft:block/blocklectern_world","y":90},
+    "facing=south":{"model":"mystcraft:block/blocklectern_world","y":180},
+    "facing=west":{"model":"mystcraft:block/blocklectern_world","y":270}
+  }
+}

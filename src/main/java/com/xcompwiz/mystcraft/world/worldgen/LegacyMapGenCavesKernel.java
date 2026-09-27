@@ -1,0 +1,185 @@
+package com.xcompwiz.mystcraft.world.worldgen;
+
+import java.util.Random;
+
+/**
+ * Literal compatibility port of Mystcraft 0.13.7.06 MapGenCavesMyst.
+ * Used both for Caves (air, size 40) and Tendrils (solid material, size 18).
+ */
+public final class LegacyMapGenCavesKernel extends LegacyMapGenAdvancedKernel {
+    private final int rate;
+    private final int size;
+
+    public LegacyMapGenCavesKernel(long seed, int rate, int size, boolean replacementSolid) {
+        super(seed, replacementSolid);
+        this.rate = rate;
+        this.size = size;
+    }
+
+    private void generateLargeCaveNode(
+            long seed, int chunkX, int chunkZ, LegacyTerrainBuffer buffer,
+            double baseX, double baseY, double baseZ) {
+        generateCaveNode(seed, chunkX, chunkZ, buffer, baseX, baseY, baseZ,
+                1.0F + rand.nextFloat() * 6F,
+                0.0F, 0.0F, -1, -1, 0.5D);
+    }
+
+    private void generateCaveNode(
+            long seed,
+            int chunkX,
+            int chunkZ,
+            LegacyTerrainBuffer buffer,
+            double baseX,
+            double baseY,
+            double baseZ,
+            float par12,
+            float par13,
+            float par14,
+            int par15,
+            int par16,
+            double par17) {
+
+        double chunkXmid = chunkX * 16 + 8;
+        double chunkZmid = chunkZ * 16 + 8;
+        int layers = 256;
+        float f = 0.0F;
+        float f1 = 0.0F;
+        Random random = new Random(seed);
+
+        if (par16 <= 0) {
+            int i = range * 16 - 16;
+            par16 = i - random.nextInt(i / 4);
+        }
+
+        boolean flag = false;
+        if (par15 == -1) {
+            par15 = par16 / 2;
+            flag = true;
+        }
+
+        int j = random.nextInt(par16 / 2) + par16 / 4;
+        boolean flag1 = random.nextInt(6) == 0;
+
+        for (; par15 < par16; par15++) {
+            double d2 = 1.5D + (LegacyMathHelper.sin(
+                    (par15 * (float) Math.PI) / par16) * par12);
+            double d3 = d2 * par17;
+            float f2 = LegacyMathHelper.cos(par14);
+            float f3 = LegacyMathHelper.sin(par14);
+            baseX += LegacyMathHelper.cos(par13) * f2;
+            baseY += f3;
+            baseZ += LegacyMathHelper.sin(par13) * f2;
+
+            if (flag1) par14 *= 0.92F;
+            else par14 *= 0.7F;
+
+            par14 += f1 * 0.1F;
+            par13 += f * 0.1F;
+            f1 *= 0.9F;
+            f *= 0.75F;
+            f1 += (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 2.0F;
+            f += (random.nextFloat() - random.nextFloat()) * random.nextFloat() * 4F;
+
+            if (!flag && par15 == j && par12 > 1.0F && par16 > 0) {
+                generateCaveNode(random.nextLong(), chunkX, chunkZ, buffer,
+                        baseX, baseY, baseZ,
+                        random.nextFloat() * 0.5F + 0.5F,
+                        par13 - ((float) Math.PI / 2F),
+                        par14 / 3F, par15, par16, 1.0D);
+                generateCaveNode(random.nextLong(), chunkX, chunkZ, buffer,
+                        baseX, baseY, baseZ,
+                        random.nextFloat() * 0.5F + 0.5F,
+                        par13 + ((float) Math.PI / 2F),
+                        par14 / 3F, par15, par16, 1.0D);
+                return;
+            }
+
+            if (!flag && random.nextInt(4) == 0) continue;
+
+            double xoffset = baseX - chunkXmid;
+            double zoffset = baseZ - chunkZmid;
+            double remaining = par16 - par15;
+            double d7 = par12 + 2.0F + 16F;
+
+            if ((xoffset * xoffset + zoffset * zoffset)
+                    - remaining * remaining > d7 * d7) {
+                return;
+            }
+
+            if (baseX < chunkXmid - 16D - d2 * 2D
+                    || baseZ < chunkZmid - 16D - d2 * 2D
+                    || baseX > chunkXmid + 16D + d2 * 2D
+                    || baseZ > chunkZmid + 16D + d2 * 2D) {
+                continue;
+            }
+
+            int minX = LegacyMathHelper.floor(baseX - d2) - chunkX * 16 - 1;
+            int maxX = LegacyMathHelper.floor(baseX + d2) - chunkX * 16 + 1;
+            int minY = LegacyMathHelper.floor(baseY - d3) - 1;
+            int maxY = LegacyMathHelper.floor(baseY + d3) + 1;
+            int minZ = LegacyMathHelper.floor(baseZ - d2) - chunkZ * 16 - 1;
+            int maxZ = LegacyMathHelper.floor(baseZ + d2) - chunkZ * 16 + 1;
+
+            if (minX < 0) minX = 0;
+            if (maxX > 16) maxX = 16;
+            if (minY < 1) minY = 1;
+            if (maxY > layers) maxY = layers;
+            if (minZ < 0) minZ = 0;
+            if (maxZ > 16) maxZ = 16;
+
+            for (int localY = minY; localY < maxY; ++localY) {
+                double yfactor = ((localY + 0.5D) - baseY) / d3;
+                double yfactorSq = yfactor * yfactor;
+                for (int localZ = minZ; localZ < maxZ; ++localZ) {
+                    double zfactor = (((localZ + chunkZ * 16) + 0.5D) - baseZ) / d2;
+                    double zfactorSq = zfactor * zfactor;
+                    for (int localX = minX; localX < maxX; ++localX) {
+                        double xfactor = (((localX + chunkX * 16) + 0.5D) - baseX) / d2;
+                        double xfactorSq = xfactor * xfactor;
+
+                        if (xfactorSq + zfactorSq < 1.0D
+                                && yfactor > -0.69999999999999996D
+                                && xfactorSq + yfactorSq + zfactorSq < 1.0D) {
+                            placeBlock(buffer, localX, localY, localZ);
+                        }
+                    }
+                }
+            }
+
+            if (flag) break;
+        }
+    }
+
+    @Override
+    protected void recursiveGenerate(
+            int x, int z, int chunkX, int chunkZ, LegacyTerrainBuffer buffer) {
+
+        int maxNodes = rand.nextInt(rand.nextInt(rand.nextInt(size) + 1) + 1);
+        if (rand.nextInt(rate) != 0) maxNodes = 0;
+
+        for (int j = 0; j < maxNodes; ++j) {
+            double d = x * 16 + rand.nextInt(16);
+            double d1 = rand.nextInt(rand.nextInt(120) + 8);
+            double d2 = z * 16 + rand.nextInt(16);
+            int k = 1;
+
+            if (rand.nextInt(4) == 0) {
+                generateLargeCaveNode(rand.nextLong(), chunkX, chunkZ, buffer, d, d1, d2);
+                k += rand.nextInt(4);
+            }
+
+            for (int l = 0; l < k; ++l) {
+                float f = rand.nextFloat() * (float) Math.PI * 2.0F;
+                float f1 = ((rand.nextFloat() - 0.5F) * 2.0F) / 8F;
+                float f2 = rand.nextFloat() * 2.0F + rand.nextFloat();
+
+                if (rand.nextInt(10) == 0) {
+                    f2 *= rand.nextFloat() * rand.nextFloat() * 3F + 1.0F;
+                }
+
+                generateCaveNode(rand.nextLong(), chunkX, chunkZ, buffer,
+                        d, d1, d2, f2, f, f1, 0, 0, 1.0D);
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+
+[[mixins]]
+config="mystcraft.mixins.json"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="Mystcraft Legacy authors; unofficial 1.21.1 port maintainer: ueno969"
+description='''
+An unofficial compatibility-focused port of Mystcraft Legacy 0.13.7.06 for Minecraft 1.21.1 / NeoForge.
+This is not an official release of Mystcraft Org, XCompWiz, or the original Mystcraft development team.
+Release contact: ueno96941@gmail.com
+NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.
+This product contains trademarks and/or copyrighted works of Cyan. All rights reserved by Cyan. This product is not official and is not endorsed by Cyan.
+See the bundled META-INF compliance, license, attribution and provenance notices for redistribution details.
+'''
+
+[[dependencies.${mod_id}]]
+modId="neoforge"
+type="required"
+versionRange="[${neo_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="jei"
+type="optional"
+versionRange="[19.16,)"
+ordering="NONE"
+side="CLIENT"

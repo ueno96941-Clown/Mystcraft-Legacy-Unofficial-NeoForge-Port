@@ -1,0 +1,3 @@
+package com.xcompwiz.mystcraft.api.hook;
+import com.xcompwiz.mystcraft.api.symbol.*; import net.minecraft.resources.ResourceLocation; import net.minecraft.world.level.block.state.BlockState;
+public interface SymbolFactory { IAgeSymbol createSymbol(String ownerModid,BlockState blockState,String thirdword,int rank,CategoryPair... categories); IAgeSymbol createSymbol(BlockState blockState,String thirdword,int rank,CategoryPair... categories); record CategoryPair(BlockCategory category,int rank){ public CategoryPair(ResourceLocation category,int rank){this(BlockCategory.getBlockCategory(category),rank);} } }

@@ -1,0 +1,14 @@
+{
+  "parent": "mystcraft:agebook",
+  "display": {
+    "icon": { "id": "mystcraft:linkbook", "count": 1 },
+    "title": { "translate": "achievement.myst.quinn" },
+    "description": { "translate": "achievement.myst.quinn.desc" },
+    "hidden": true
+  },
+  "criteria": {
+    "myst_quinn_trigger": { "trigger": "mystcraft:enter_myst_dimension_quinn" }
+  },
+  "requirements": [["myst_quinn_trigger"]],
+  "sends_telemetry_event": false
+}

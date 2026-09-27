@@ -1,0 +1,16 @@
+{
+  "parent": "mystcraft:root",
+  "display": {
+    "icon": { "id": "mystcraft:agebook", "count": 1 },
+    "title": { "translate": "achievement.myst.agebook" },
+    "description": { "translate": "achievement.myst.agebook.desc" }
+  },
+  "criteria": {
+    "myst_agebook_in_inventory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": { "items": [{ "items": "mystcraft:agebook" }] }
+    }
+  },
+  "requirements": [["myst_agebook_in_inventory"]],
+  "sends_telemetry_event": false
+}

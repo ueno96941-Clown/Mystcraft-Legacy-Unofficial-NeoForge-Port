@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x,full=false": { "model": "mystcraft:block/linkportal_ew" },
+    "axis=y,full=false": { "model": "mystcraft:block/linkportal_ud" },
+    "axis=z,full=false": { "model": "mystcraft:block/linkportal_ns" },
+    "axis=x,full=true": { "model": "mystcraft:block/linkportal_full" },
+    "axis=y,full=true": { "model": "mystcraft:block/linkportal_full" },
+    "axis=z,full=true": { "model": "mystcraft:block/linkportal_full" }
+  }
+}

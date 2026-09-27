@@ -1,0 +1,155 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.146'
+    id 'idea'
+}
+
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
+}
+
+version = mod_version
+group = mod_group_id
+
+sourceSets.main.resources {
+    srcDir('src/generated/resources')
+}
+
+repositories {
+    maven {
+        name = "BlameJared"
+        url = "https://maven.blamejared.com/"
+        content {
+            includeGroup "mezz.jei"
+        }
+    }
+}
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+neoForge {
+    version = project.neo_version
+
+    // Fail the Gradle build immediately if a mapped Access Transformer target is stale or misspelled.
+    // I93+ relies on this for the additive Archivist village-pool patch.
+    validateAccessTransformers = true
+
+    parchment {
+        mappingsVersion = project.parchment_mappings_version
+        minecraftVersion = project.parchment_minecraft_version
+    }
+
+    runs {
+        client {
+            client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        gameTestServer {
+            type = 'gameTestServer'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+        data {
+            data()
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
+dependencies {
+    // Optional JEI compile-time integration. The full JEI mod is intentionally not bundled
+    // or required at runtime; when JEI is absent, Mystcraft functions normally.
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+}
+
+var generateModMetadata = tasks.register('generateModMetadata', ProcessResources) {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+    ]
+    inputs.properties replaceProperties
+    expand replaceProperties
+    from 'src/main/templates'
+    into 'build/generated/sources/modMetadata'
+}
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/repo"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}
+
+// Gradle 9 fails the Test task when no JUnit tests are discovered. This port's
+// executable regressions currently live in source harnesses/GameTest, so an empty
+// conventional JVM test source set is valid.
+tasks.withType(Test).configureEach {
+    failOnNoDiscoveredTests = false
+}
+
+// Keep license/provenance notices with the distributable mod JAR so a binary release
+// remains self-describing even when it is downloaded without the source repository.
+tasks.named('jar', Jar).configure {
+    into('META-INF') {
+        from('LICENSE') { rename { 'LICENSE-LGPL-3.0-mystcraft-port.txt' } }
+        from('LICENSES/GPL-3.0.txt') { rename { 'LICENSE-GPL-3.0.txt' } }
+        from('ATTRIBUTION.md')
+        from('MODIFICATION_NOTICE.md')
+        from('SOURCE_PROVENANCE.md')
+        from('ASSET_PROVENANCE_SHA256.tsv')
+        from('COMPLIANCE_AND_LICENSE_NOTICE.md')
+        from('COMPLIANCE_AUDIT_REPORT.md')
+        from('COMPLIANCE_SUMMARY_JA.md')
+        from('THIRD_PARTY_NOTICES.md')
+        from('KNOWN_ISSUES.md')
+    }
+}

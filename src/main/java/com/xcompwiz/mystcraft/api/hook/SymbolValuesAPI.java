@@ -1,0 +1,3 @@
+package com.xcompwiz.mystcraft.api.hook;
+import com.xcompwiz.mystcraft.api.symbol.IAgeSymbol; import net.minecraft.resources.ResourceLocation; import net.minecraft.world.item.ItemStack; import java.util.List;
+public interface SymbolValuesAPI { void setSymbolCardRank(IAgeSymbol symbol,int rank); void setSymbolIsPurchasable(IAgeSymbol symbol,boolean flag); float getSymbolItemWeight(ResourceLocation identifier); boolean getSymbolIsTradable(ResourceLocation identifier); void setSymbolTradeItem(IAgeSymbol symbol,ItemStack stack); void setSymbolTradeItems(IAgeSymbol symbol,ItemStack stack,ItemStack secondary); List<ItemStack> getSymbolTradeItems(ResourceLocation identifier); }

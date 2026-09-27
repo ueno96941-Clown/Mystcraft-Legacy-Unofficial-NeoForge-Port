@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "mystcraft:block/inkwell_model" },
+    "facing=east":  { "model": "mystcraft:block/inkwell_model", "y": 90 },
+    "facing=south": { "model": "mystcraft:block/inkwell_model", "y": 180 },
+    "facing=west":  { "model": "mystcraft:block/inkwell_model", "y": 270 }
+  }
+}

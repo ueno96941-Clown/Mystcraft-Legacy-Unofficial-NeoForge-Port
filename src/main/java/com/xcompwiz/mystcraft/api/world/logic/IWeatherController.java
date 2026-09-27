@@ -1,0 +1,3 @@
+package com.xcompwiz.mystcraft.api.world.logic;
+import com.xcompwiz.mystcraft.api.world.storage.StorageObject; import net.minecraft.resources.ResourceLocation; import net.minecraft.world.level.Level; import net.minecraft.world.level.chunk.LevelChunk;
+public interface IWeatherController { void setDataObject(StorageObject infoObj); void updateRaining(); void tick(Level worldObj,LevelChunk chunk); void reset(); void togglePrecipitation(); float getRainingStrength(); float getStormStrength(); float getTemperature(float current,ResourceLocation biomeId); float getRainfall(float current,ResourceLocation biomeId); boolean getEnableSnow(boolean current,ResourceLocation biomeId); boolean getEnableRain(boolean current,ResourceLocation biomeId); }

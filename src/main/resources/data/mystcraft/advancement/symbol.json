@@ -1,0 +1,16 @@
+{
+  "parent": "mystcraft:root",
+  "display": {
+    "icon": { "id": "mystcraft:page", "count": 1 },
+    "title": { "translate": "achievement.myst.symbol" },
+    "description": { "translate": "achievement.myst.symbol.desc" }
+  },
+  "criteria": {
+    "myst_symbol_page_in_inventory": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": { "items": [{ "items": "mystcraft:page" }] }
+    }
+  },
+  "requirements": [["myst_symbol_page_in_inventory"]],
+  "sends_telemetry_event": false
+}

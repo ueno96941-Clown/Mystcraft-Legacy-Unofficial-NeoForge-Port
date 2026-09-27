@@ -1,0 +1,123 @@
+package com.xcompwiz.mystcraft.symbol;
+
+/** Exact static symbol IDs registered by Mystcraft Legacy 0.13.7.06 ModSymbols.initialize(). */
+final class BuiltinLegacySymbols {
+    private BuiltinLegacySymbols() {}
+
+    static void registerAll() {
+        register("mystcraft:ColorCloud", SymbolCategory.COLOR, 1, "SymbolColorCloud");
+        register("mystcraft:ColorCloudNat", SymbolCategory.COLOR, 1, "SymbolColorCloudNatural");
+        register("mystcraft:ColorFog", SymbolCategory.COLOR, 1, "SymbolColorFog");
+        register("mystcraft:ColorFogNat", SymbolCategory.COLOR, 1, "SymbolColorFogNatural");
+        register("mystcraft:ColorFoliage", SymbolCategory.COLOR, 1, "SymbolColorFoliage");
+        register("mystcraft:ColorFoliageNat", SymbolCategory.COLOR, 1, "SymbolColorFoliageNatural");
+        register("mystcraft:ColorGrass", SymbolCategory.COLOR, 1, "SymbolColorGrass");
+        register("mystcraft:ColorGrassNat", SymbolCategory.COLOR, 1, "SymbolColorGrassNatural");
+        register("mystcraft:ColorSky", SymbolCategory.COLOR, 1, "SymbolColorSky");
+        register("mystcraft:ColorSkyNat", SymbolCategory.COLOR, 1, "SymbolColorSkyNatural");
+        register("mystcraft:ColorSkyNight", SymbolCategory.COLOR, 1, "SymbolColorSkyNight");
+        register("mystcraft:ColorWater", SymbolCategory.COLOR, 1, "SymbolColorWater");
+        register("mystcraft:ColorWaterNat", SymbolCategory.COLOR, 1, "SymbolColorWaterNatural");
+        register("mystcraft:Rainbow", SymbolCategory.CELESTIAL, 1, "SymbolDoodadRainbow");
+        register("mystcraft:NoHorizon", SymbolCategory.CELESTIAL, 1, "SymbolHideHorizon");
+        register("mystcraft:MoonDark", SymbolCategory.CELESTIAL, 1, "SymbolDummy");
+        register("mystcraft:MoonNormal", SymbolCategory.CELESTIAL, 1, "SymbolMoonNormal");
+        register("mystcraft:StarsDark", SymbolCategory.CELESTIAL, 1, "SymbolDummy");
+        register("mystcraft:StarsEndSky", SymbolCategory.CELESTIAL, 1, "SymbolStarsEndSky");
+        register("mystcraft:StarsNormal", SymbolCategory.CELESTIAL, 1, "SymbolStarsNormal");
+        register("mystcraft:StarsTwinkle", SymbolCategory.CELESTIAL, 1, "SymbolStarsTwinkle");
+        register("mystcraft:SunDark", SymbolCategory.CELESTIAL, 1, "SymbolDummy");
+        register("mystcraft:SunNormal", SymbolCategory.CELESTIAL, 2, "SymbolSunNormal");
+        register("mystcraft:BioConGrid", SymbolCategory.BIOME_CONTROLLER, 3, "SymbolBiomeControllerGrid");
+        register("mystcraft:BioConNative", SymbolCategory.BIOME_CONTROLLER, 3, "SymbolBiomeControllerNative");
+        register("mystcraft:BioConSingle", SymbolCategory.BIOME_CONTROLLER, 3, "SymbolBiomeControllerSingle");
+        register("mystcraft:BioConTiled", SymbolCategory.BIOME_CONTROLLER, 3, "SymbolBiomeControllerTiled");
+        register("mystcraft:BioConHuge", SymbolCategory.BIOME_CONTROLLER, 3, "SymbolBiomeControllerHuge");
+        register("mystcraft:BioConLarge", SymbolCategory.BIOME_CONTROLLER, 3, "SymbolBiomeControllerLarge");
+        register("mystcraft:BioConMedium", SymbolCategory.BIOME_CONTROLLER, 3, "SymbolBiomeControllerMedium");
+        register("mystcraft:BioConSmall", SymbolCategory.BIOME_CONTROLLER, 3, "SymbolBiomeControllerSmall");
+        register("mystcraft:BioConTiny", SymbolCategory.BIOME_CONTROLLER, 3, "SymbolBiomeControllerTiny");
+        register("mystcraft:NoSea", SymbolCategory.MODIFIER, 2, "SymbolNoSea");
+        register("mystcraft:PvPOff", SymbolCategory.ENVIRONMENT, null, "SymbolAntiPvP");
+        register("mystcraft:EnvAccel", SymbolCategory.ENVIRONMENT, 3, "SymbolEnvAccelerated");
+        register("mystcraft:EnvExplosions", SymbolCategory.ENVIRONMENT, 3, "SymbolEnvExplosions");
+        register("mystcraft:EnvLightning", SymbolCategory.ENVIRONMENT, 3, "SymbolEnvLightning");
+        register("mystcraft:EnvMeteor", SymbolCategory.ENVIRONMENT, 3, "SymbolEnvMeteor");
+        register("mystcraft:EnvScorch", SymbolCategory.ENVIRONMENT, 3, "SymbolEnvScorched");
+        register("mystcraft:LightingBright", SymbolCategory.LIGHTING, 3, "SymbolLightingBright");
+        register("mystcraft:LightingDark", SymbolCategory.LIGHTING, 3, "SymbolLightingDark");
+        register("mystcraft:LightingNormal", SymbolCategory.LIGHTING, 2, "SymbolLightingNormal");
+        register("mystcraft:ModNorth", SymbolCategory.MODIFIER, 0, "SymbolAngle");
+        register("mystcraft:ModEast", SymbolCategory.MODIFIER, 0, "SymbolAngle");
+        register("mystcraft:ModSouth", SymbolCategory.MODIFIER, 0, "SymbolAngle");
+        register("mystcraft:ModWest", SymbolCategory.MODIFIER, 0, "SymbolAngle");
+        register("mystcraft:ModClear", SymbolCategory.MODIFIER, 0, "SymbolClear");
+        register("mystcraft:ModGradient", SymbolCategory.MODIFIER, 1, "SymbolGradient");
+        register("mystcraft:ColorHorizon", SymbolCategory.MODIFIER, 0, "SymbolHorizonColor");
+        register("mystcraft:ModZero", SymbolCategory.MODIFIER, 0, "SymbolLength");
+        register("mystcraft:ModHalf", SymbolCategory.MODIFIER, 0, "SymbolLength");
+        register("mystcraft:ModFull", SymbolCategory.MODIFIER, 0, "SymbolLength");
+        register("mystcraft:ModDouble", SymbolCategory.MODIFIER, 0, "SymbolLength");
+        register("mystcraft:ModEnd", SymbolCategory.MODIFIER, 0, "SymbolPhase");
+        register("mystcraft:ModRising", SymbolCategory.MODIFIER, 0, "SymbolPhase");
+        register("mystcraft:ModNoon", SymbolCategory.MODIFIER, 0, "SymbolPhase");
+        register("mystcraft:ModSetting", SymbolCategory.MODIFIER, 0, "SymbolPhase");
+        register("mystcraft:Caves", SymbolCategory.FEATURE, 2, "SymbolCaves");
+        register("mystcraft:Dungeons", SymbolCategory.STRUCTURE, 2, "SymbolDungeons");
+        register("mystcraft:FloatIslands", SymbolCategory.FEATURE, 3, "SymbolFloatingIslands");
+        register("mystcraft:FeatureLargeDummy", SymbolCategory.OTHER, 4, "SymbolDummy");
+        register("mystcraft:FeatureMediumDummy", SymbolCategory.OTHER, 4, "SymbolDummy");
+        register("mystcraft:FeatureSmallDummy", SymbolCategory.OTHER, 5, "SymbolDummy");
+        register("mystcraft:HugeTrees", SymbolCategory.FEATURE, 2, "SymbolHugeTrees");
+        register("mystcraft:LakesDeep", SymbolCategory.FEATURE, 3, "SymbolLakesDeep");
+        register("mystcraft:LakesSurface", SymbolCategory.FEATURE, 3, "SymbolLakesSurface");
+        register("mystcraft:Mineshafts", SymbolCategory.STRUCTURE, 3, "SymbolMineshafts");
+        register("mystcraft:NetherFort", SymbolCategory.STRUCTURE, 3, "SymbolNetherFort");
+        register("mystcraft:Obelisks", SymbolCategory.STRUCTURE, 3, "SymbolObelisks");
+        register("mystcraft:Ravines", SymbolCategory.FEATURE, 2, "SymbolRavines");
+        register("mystcraft:TerModSpheres", SymbolCategory.FEATURE, 2, "SymbolSpheres");
+        register("mystcraft:GenSpikes", SymbolCategory.FEATURE, 3, "SymbolSpikes");
+        register("mystcraft:Strongholds", SymbolCategory.STRUCTURE, 3, "SymbolStrongholds");
+        register("mystcraft:Tendrils", SymbolCategory.FEATURE, 3, "SymbolTendrils");
+        register("mystcraft:Villages", SymbolCategory.STRUCTURE, 3, "SymbolVillages");
+        register("mystcraft:CryForm", SymbolCategory.FEATURE, 3, "SymbolCrystalFormation");
+        register("mystcraft:Skylands", SymbolCategory.FEATURE, 3, "SymbolSkylands");
+        register("mystcraft:StarFissure", SymbolCategory.FEATURE, 3, "SymbolStarFissure");
+        register("mystcraft:DenseOres", SymbolCategory.ENVIRONMENT, 5, "SymbolDenseOres");
+        register("mystcraft:WeatherOn", SymbolCategory.WEATHER, 3, "SymbolWeatherAlways");
+        register("mystcraft:WeatherCloudy", SymbolCategory.WEATHER, 3, "SymbolWeatherCloudy");
+        register("mystcraft:WeatherFast", SymbolCategory.WEATHER, 3, "SymbolWeatherFast");
+        register("mystcraft:WeatherNorm", SymbolCategory.WEATHER, 2, "SymbolWeatherNormal");
+        register("mystcraft:WeatherOff", SymbolCategory.WEATHER, 3, "SymbolWeatherOff");
+        register("mystcraft:WeatherRain", SymbolCategory.WEATHER, 3, "SymbolWeatherRain");
+        register("mystcraft:WeatherSlow", SymbolCategory.WEATHER, 3, "SymbolWeatherSlow");
+        register("mystcraft:WeatherSnow", SymbolCategory.WEATHER, 3, "SymbolWeatherSnow");
+        register("mystcraft:WeatherStorm", SymbolCategory.WEATHER, 3, "SymbolWeatherStorm");
+        register("mystcraft:TerrainAmplified", SymbolCategory.TERRAIN, 3, "SymbolTerrainGenAmplified");
+        register("mystcraft:TerrainEnd", SymbolCategory.TERRAIN, 4, "SymbolTerrainGenEnd");
+        register("mystcraft:TerrainFlat", SymbolCategory.TERRAIN, 3, "SymbolTerrainGenFlat");
+        register("mystcraft:TerrainNether", SymbolCategory.TERRAIN, 4, "SymbolTerrainGenNether");
+        register("mystcraft:TerrainNormal", SymbolCategory.TERRAIN, 2, "SymbolTerrainGenNormal");
+        register("mystcraft:TerrainVoid", SymbolCategory.TERRAIN, 4, "SymbolTerrainGenVoid");
+        register("mystcraft:ModColorMaroon", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorRed", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorOlive", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorYellow", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorDarkGreen", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorGreen", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorTeal", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorCyan", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorNavy", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorBlue", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorPurple", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorMagenta", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorBlack", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorGrey", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorSilver", SymbolCategory.MODIFIER, 0, "SymbolColor");
+        register("mystcraft:ModColorWhite", SymbolCategory.MODIFIER, 0, "SymbolColor");
+    }
+
+    private static void register(String legacyId, SymbolCategory category, Integer cardRank, String legacyImplementation) {
+        SymbolRegistry.register(SymbolDefinition.legacy(legacyId, category, cardRank, legacyImplementation));
+    }
+}

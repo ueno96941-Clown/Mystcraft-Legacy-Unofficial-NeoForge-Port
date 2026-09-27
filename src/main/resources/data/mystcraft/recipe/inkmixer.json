@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "S S",
+    "SVS",
+    "PSP"
+  ],
+  "key": {
+    "S": { "item": "minecraft:stone" },
+    "V": { "item": "minecraft:glass_bottle" },
+    "P": { "tag": "minecraft:planks" }
+  },
+  "result": {
+    "id": "mystcraft:blockinkmixer",
+    "count": 1
+  }
+}

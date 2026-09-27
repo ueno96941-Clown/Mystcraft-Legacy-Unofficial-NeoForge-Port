@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": ["CCC", "C C", "CCC"],
+  "key": { "C": { "item": "mystcraft:blockcrystal" } },
+  "result": { "id": "mystcraft:blockbookreceptacle", "count": 1 }
+}

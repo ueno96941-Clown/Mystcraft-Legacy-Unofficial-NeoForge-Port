@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:dyes/black"
+    },
+    {
+      "tag": "c:dyes/black"
+    },
+    {
+      "item": "minecraft:potion"
+    }
+  ],
+  "result": {
+    "id": "mystcraft:vial",
+    "count": 1
+  }
+}

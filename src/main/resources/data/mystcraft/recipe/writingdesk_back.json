@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PPP",
+    "PFP"
+  ],
+  "key": {
+    "P": { "tag": "minecraft:planks" },
+    "F": { "item": "minecraft:item_frame" }
+  },
+  "result": {
+    "id": "mystcraft:writingdesk",
+    "count": 1,
+    "components": {
+      "minecraft:custom_data": {
+        "MystWritingDeskPart": "top"
+      }
+    }
+  }
+}

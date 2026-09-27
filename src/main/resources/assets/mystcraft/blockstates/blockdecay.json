@@ -1,0 +1,8 @@
+{
+  "multipart": [
+    { "when": { "decay": "red" },    "apply": { "model": "mystcraft:block/decay_red" } },
+    { "when": { "decay": "blue" },   "apply": { "model": "mystcraft:block/decay_blue" } },
+    { "when": { "decay": "purple" }, "apply": { "model": "mystcraft:block/decay_purple" } },
+    { "when": { "decay": "white" },  "apply": { "model": "mystcraft:block/decay_white" } }
+  ]
+}
