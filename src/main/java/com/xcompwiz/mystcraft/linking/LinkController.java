@@ -160,9 +160,14 @@ public final class LinkController {
                     Mystcraft.LOGGER.error(
                             "Failed to prepare/install Mystcraft Age {} ({}) for linking",
                             age.ageUid(), age.dimensionKey(), failure);
-                    player.displayClientMessage(Component.translatable(
-                            "message.mystcraft.link_age_install_failed",
-                            age.ageName(), age.dimensionKey(), failure.getClass().getSimpleName()), true);
+                    if (isFeatureOrderCycle(failure)) {
+                        player.displayClientMessage(Component.translatable(
+                                "message.mystcraft.link_age_description_contradiction"), true);
+                    } else {
+                        player.displayClientMessage(Component.translatable(
+                                "message.mystcraft.link_age_install_failed",
+                                age.ageName(), age.dimensionKey(), failure.getClass().getSimpleName()), true);
+                    }
                     return false;
                 }
             } else {
@@ -867,4 +872,13 @@ public final class LinkController {
         double redirectedZ = sin * localX + cos * localZ;
         return new Vec3(redirectedX, motion.y + 0.2D, redirectedZ);
     }
+
+    private static boolean isFeatureOrderCycle(Throwable failure) {
+        for (Throwable current = failure; current != null; current = current.getCause()) {
+            String message = current.getMessage();
+            if (message != null && message.contains("Feature order cycle found")) return true;
+        }
+        return false;
+    }
+
 }

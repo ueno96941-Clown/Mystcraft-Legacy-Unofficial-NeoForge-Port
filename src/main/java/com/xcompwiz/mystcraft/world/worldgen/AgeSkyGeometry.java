@@ -86,7 +86,11 @@ public final class AgeSkyGeometry {
     public static List<Quad> verticalGradientDome(AgeColor zenith, AgeColor horizon) {
         final int sectors = 64;
         final int bands = 32;
-        final float radius = 512F;
+        // CP351: keep this camera-relative shell inside Minecraft's far clip even at low
+        // render distances. 512F intersects the projection far plane at <=7 chunks and
+        // exposes the shell as a giant circular cut. Geometry is angular, so shrinking
+        // the radius does not change the sky/fog gradient; y/radius remains identical.
+        final float radius = 96F;
         final float fogBlendEndSin = (float)Math.sin(Math.toRadians(16.0));
         ArrayList<Quad> out = new ArrayList<>();
         for (int band = 0; band < bands; band++) {
@@ -120,8 +124,9 @@ public final class AgeSkyGeometry {
             double a1 = Math.PI * 2.0 * (sector + 1) / sectors;
             Vertex a = cv((float)(Math.cos(a0)*radius), 0F, (float)(Math.sin(a0)*radius), horizon);
             Vertex b = cv((float)(Math.cos(a1)*radius), 0F, (float)(Math.sin(a1)*radius), horizon);
-            Vertex c = cv((float)(Math.cos(a1)*radius), -128F, (float)(Math.sin(a1)*radius), horizon);
-            Vertex d = cv((float)(Math.cos(a0)*radius), -128F, (float)(Math.sin(a0)*radius), horizon);
+            // Keep the skirt inside the minimum practical far plane as well.
+            Vertex c = cv((float)(Math.cos(a1)*radius), -64F, (float)(Math.sin(a1)*radius), horizon);
+            Vertex d = cv((float)(Math.cos(a0)*radius), -64F, (float)(Math.sin(a0)*radius), horizon);
             out.add(new Quad(a,b,c,d));
         }
         return List.copyOf(out);

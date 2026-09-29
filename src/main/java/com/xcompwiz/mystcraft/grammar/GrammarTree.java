@@ -59,6 +59,15 @@ public final class GrammarTree {
      * order and duplicate positions.
      */
     public List<String> getExpanded(Random random) {
+        return getExpandedInternal(random, false);
+    }
+
+    /** Age-generation-only expansion with bounded recursive random completion. */
+    public List<String> getExpandedRandomCompletion(Random random) {
+        return getExpandedInternal(random, true);
+    }
+
+    private List<String> getExpandedInternal(Random random, boolean boundedRandomCompletion) {
         Objects.requireNonNull(random, "random");
 
         ArrayList<String> out = new ArrayList<>(terminals);
@@ -96,13 +105,17 @@ public final class GrammarTree {
             List<String> products = insertRight.get(i - 1);
             if (products != null) {
                 for (int j = products.size(); j > 0; --j) {
-                    out.addAll(i, GrammarExplorer.explore(products.get(j - 1), random));
+                    out.addAll(i, boundedRandomCompletion
+                            ? GrammarExplorer.exploreRandomCompletion(products.get(j - 1), random)
+                            : GrammarExplorer.explore(products.get(j - 1), random));
                 }
             }
             products = insertLeft.get(i - 1);
             if (products != null) {
                 for (int j = products.size(); j > 0; --j) {
-                    out.addAll(i - 1, GrammarExplorer.explore(products.get(j - 1), random));
+                    out.addAll(i - 1, boundedRandomCompletion
+                            ? GrammarExplorer.exploreRandomCompletion(products.get(j - 1), random)
+                            : GrammarExplorer.explore(products.get(j - 1), random));
                 }
             }
         }

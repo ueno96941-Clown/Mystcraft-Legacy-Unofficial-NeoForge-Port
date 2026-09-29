@@ -28,6 +28,7 @@ public final class AgeSymbolResolver {
 
         GrammarTree tree = new GrammarTree();
         tree.parseTerminals(requested, new Random(ageSeed));
-        return tree.getExpanded(new Random(ageSeed));
+        List<String> expanded = tree.getExpandedRandomCompletion(new Random(ageSeed));
+        return RandomAgeCompletionLimiter.limit(expanded, requested);
     }
 }

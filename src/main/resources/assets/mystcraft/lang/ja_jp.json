@@ -300,5 +300,6 @@
   "myst.symbol.biome.legacy.165": "浸食されたメサ",
   "myst.symbol.biome.legacy.166": "変異した森のメサ台地",
   "myst.symbol.biome.legacy.167": "変異したメサ台地",
-  "block.mystcraft.blockdecay": "崩壊"
+  "block.mystcraft.blockdecay": "崩壊",
+  "message.mystcraft.link_age_description_contradiction": "すでに崩壊してて入れない。別の方法で作らなければ。"
 }

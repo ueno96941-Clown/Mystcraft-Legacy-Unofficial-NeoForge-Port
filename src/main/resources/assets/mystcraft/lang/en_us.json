@@ -300,5 +300,6 @@
   "myst.symbol.biome.legacy.165": "Mesa (Bryce)",
   "myst.symbol.biome.legacy.166": "Mesa Plateau F M",
   "myst.symbol.biome.legacy.167": "Mesa Plateau M",
-  "block.mystcraft.blockdecay": "Decay"
+  "block.mystcraft.blockdecay": "Decay",
+  "message.mystcraft.link_age_description_contradiction": "This Age has already collapsed. It must be created another way."
 }
